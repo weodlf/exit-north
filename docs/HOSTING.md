@@ -22,19 +22,30 @@ npm start
 
 검증 브라우저가 있는 이 환경에서는 `npm run check`로 전체 자동 검증을 다시 실행할 수 있다. 설치·빌드와 서버 시작은 분리되어 있다. 기본 포트가 사용 중이면 해당 프로세스를 함부로 종료하지 말고 `PORT=3001 npm start` 같은 대체 포트를 사용한다.
 
-## 공개 배포를 위해 준비한 것
+## GitHub Pages 배포 상태와 최초 설정
 
 `.github/workflows/pages.yml`은 `main`의 `index.html` 변경 또는 수동 실행 시 정적 게임을 GitHub Pages에 배포하는 워크플로다. 배포 아티팩트에는 단일 HTML만 들어가고 소스·Git 메타데이터는 포함하지 않는다.
 
-사용 조건:
+2026-10-30 확인:
 
-1. 저장소에 결과물을 반영해야 한다. 현재 작업에서 원격 저장소에 push한 것은 아니다.
-2. 저장소 Settings → Pages에서 Source를 **GitHub Actions**로 설정해야 한다. 계정 권한·저장소 공개 범위·요금제에 따라 Pages 지원 여부가 다를 수 있다.
-3. 워크플로를 실행하고 실제 `deployment.outputs.page_url`과 HTTP 응답·브라우저 동작을 확인해야 공개 배포 완료다. 예상 URL을 발급된 주소처럼 안내하지 않는다.
+- 게임 코드·모델 원본·문서를 `weodlf/exit-north`의 `main`에 push했다. 첫 구현 커밋은 `2cdbca2`다.
+- 저장소는 공개이며, 현재 GitHub 연결로 저장소 조회와 push가 가능하다. `api.github.com`과 `weodlf.github.io`에 대한 네트워크 요청도 정상 도달한다.
+- [최초 배포 실행](https://github.com/weodlf/exit-north/actions/runs/41022874461)은 Pages가 활성화되지 않아 `actions/configure-pages`에서 실패했다.
+- Pages 생성 API를 호출했으나 **HTTP 403 / Resource not accessible by integration**으로 거부되었다. 저장소 조회의 `admin: true`가 연결 토큰의 Pages 설정 변경 권한을 보장하지는 않는다. 공식 `configure-pages`의 자동 활성화도 기본 `GITHUB_TOKEN` 이외의 권한 있는 토큰을 요구하므로 워크플로 옵션만 바꿔 해결하지 않는다.
+- `https://weodlf.github.io/exit-north/`의 현재 응답은 **404**다. 아직 검증된 공개 게임 주소가 아니다.
 
-현재 환경에서는 GitHub API의 `api.github.com` 접속이 egress proxy의 **CONNECT 403**으로 차단되었다. 기존 Git 읽기 인증과 API 접근 권한은 별개이며, 새 토큰이 필요하다고 단정하지 않는다. 네트워크 허용과 기존 인증의 API 권한을 확인해야 Pages 설정·배포를 원격 자동화할 수 있다. 필요한 도메인은 API 작업용 `api.github.com`, Pages 결과 확인용 `weodlf.github.io`다. 이는 설정 저장만으로 현재 머신의 정책이 즉시 바뀐다는 의미는 아니다.
+저장소 관리자가 최초 1회 해야 할 설정:
 
-공개 배포 도구나 연결된 배포 계정도 현재 제공되지 않았다. 서버 실행을 공개 URL 배포와 혼동하지 않으며, 배포 상태는 **준비 완료·외부 조건 미충족**이다. 네트워크/배포 연결이 제공되면 기존 자격 증명으로 접근을 다시 시험한 뒤 배포와 외부 검증을 이어간다. 비밀 값은 채팅으로 전달하지 않는다.
+1. [Settings → Pages](https://github.com/weodlf/exit-north/settings/pages)를 연다.
+2. **Build and deployment → Source → GitHub Actions**를 선택한다.
+3. [배포 워크플로](https://github.com/weodlf/exit-north/actions/workflows/pages.yml)의 **Run workflow**로 `main`을 실행한다. 현재 연결에서 아래 CLI로 실행할 수도 있다.
+
+```sh
+gh workflow run pages.yml --repo weodlf/exit-north --ref main
+gh run list --repo weodlf/exit-north --workflow pages.yml --limit 3
+```
+
+성공한 실행의 실제 `deployment.outputs.page_url`과 HTTP 200을 확인하고, 해당 HTTPS 페이지에서 WebGL 캐릭터·이동 비용·E 조사·인벤토리·저장·모바일 레이아웃을 검증해야 배포 완료다. 활성화 전에 실패한 실행을 그대로 성공으로 취급하지 않는다. 비밀 토큰을 채팅에 전달할 필요는 없다.
 
 ## 다른 정적 호스트 또는 자체 서버
 

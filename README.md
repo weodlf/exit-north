@@ -6,6 +6,8 @@
 
 **바로 실행:** [`index.html`](index.html)을 브라우저로 열면 됩니다. Three.js·모델·데이터를 내장했으며 런타임 CDN·API·외부 모델 요청이 없는 단일 파일입니다. 파일 실행 시 저장 정책은 브라우저마다 다르므로 지속적인 플레이에는 HTTP 서버를 권장합니다.
 
+**공개 배포:** GitHub Pages 워크플로를 저장소에 반영했습니다. 최초 1회 [Pages 설정](https://github.com/weodlf/exit-north/settings/pages)의 **Build and deployment → Source → GitHub Actions**를 선택해야 합니다. 현재 연결은 이 설정 변경을 HTTP 403으로 거부당했으며, 아직 공개 배포를 완료하지 못했습니다. 활성화 후 [배포 워크플로](https://github.com/weodlf/exit-north/actions/workflows/pages.yml)를 실행하세요. [배포 상태와 절차](docs/HOSTING.md).
+
 ```sh
 cd /workspace/exit-north
 npm start

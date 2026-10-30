@@ -42,7 +42,8 @@
 
 - 현재 클라우드 서버는 새 3D HTML을 제공하며 정상 응답한다. 공개 URL이나 영구 외부 호스팅이 완료된 것은 아니다.
 - 사용자가 요청한 **Sites 플러그인은 현재 도구·스킬 검색에서 게시 기능이 제공되지 않았다.** Sites 설치·계정 연결·게시를 자율 실행할 수 있는 도구가 없어 실제 게시 호출이나 공개 주소 발급을 하지 못했다.
-- GitHub Pages 워크플로는 준비된 대체 경로다. 원격 push·Pages 활성화·공개 배포 검증은 하지 않았다. 이전 GitHub API 접근은 egress CONNECT 403이었다.
+- 게임 코드·모델 원본·문서를 GitHub `main`에 push하고 원격 커밋 `2cdbca2`를 확인했다. Pages 워크플로도 포함되어 있다. 현재 환경은 `api.github.com`·`weodlf.github.io` 접근을 허용하고 실제 요청이 도달한다.
+- 최초 Pages 실행 `41022874461`은 Pages 미활성화로 `configure-pages` 단계에서 실패했다. API로 활성화를 시도했으나 **HTTP 403 / Resource not accessible by integration**으로 거부되었다. 이는 이전 egress 차단과 다른 GitHub 연결의 권한 제한이다. 저장소 관리자가 Pages Source를 **GitHub Actions**로 설정하면 워크플로를 재실행하고 공개 응답·실제 게임 동작을 검증해야 한다. 현재 후보 주소의 응답은 404이며 공개 배포 완료로 안내하지 않는다.
 - 설치·재시작 지침은 환경 설정 초안에 저장했다. 초안 검토·저장·환경 게시와 Sites 웹 공개는 서로 다른 작업이다.
 - GPU 검증은 SwiftShader다. 실제 모바일 하드웨어·Safari·특정 GPU의 FPS, 전체 월드의 장시간 메모리 사용, Unity 빌드는 검증하지 않았다.
 - 관리형 브라우저의 `file://` 정책 차단을 우회하지 않았다. HTTP 실행과 서버 없는 HTML 렌더링은 각각 확인했다.
