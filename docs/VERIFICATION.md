@@ -40,10 +40,11 @@
 
 ## 배포 상태와 제한
 
-- 현재 클라우드 서버는 새 3D HTML을 제공하며 정상 응답한다. 공개 URL이나 영구 외부 호스팅이 완료된 것은 아니다.
-- 사용자가 요청한 **Sites 플러그인은 현재 도구·스킬 검색에서 게시 기능이 제공되지 않았다.** Sites 설치·계정 연결·게시를 자율 실행할 수 있는 도구가 없어 실제 게시 호출이나 공개 주소 발급을 하지 못했다.
-- 게임 코드·모델 원본·문서를 GitHub `main`에 push하고 원격 커밋 `2cdbca2`를 확인했다. Pages 워크플로도 포함되어 있다. 현재 환경은 `api.github.com`·`weodlf.github.io` 접근을 허용하고 실제 요청이 도달한다.
-- 최초 Pages 실행 `41022874461`은 Pages 미활성화로 `configure-pages` 단계에서 실패했다. API로 활성화를 시도했으나 **HTTP 403 / Resource not accessible by integration**으로 거부되었다. 이는 이전 egress 차단과 다른 GitHub 연결의 권한 제한이다. 저장소 관리자가 Pages Source를 **GitHub Actions**로 설정하면 워크플로를 재실행하고 공개 응답·실제 게임 동작을 검증해야 한다. 현재 후보 주소의 응답은 404이며 공개 배포 완료로 안내하지 않는다.
+- **공개 배포 완료:** https://weodlf.github.io/exit-north/ — [GitHub Pages 실행 41025240762](https://github.com/weodlf/exit-north/actions/runs/41025240762)이 성공했다. 공개 HTML은 HTTP 200이며 SHA-256이 저장소의 빌드와 일치한다.
+- **공개 환경 8항목 추가 확인:** HTTPS·빌드 일치, WebGL 리깅 모델·4개 애니메이션, 실제 WASD 접근·E 조사·비용·라디오, 인벤토리·음식 소비, 새로고침 후 상태 복원, 390px 모바일 방향 패드·가로 넘침 없음, 실제 DOM 선택으로 6장 완주, JS 예외·실패 요청·외부 런타임 요청 없음. 기존 53개 로컬 검사와 별도로 실행했다. 공개 검증 결과·스크린샷은 무시된 `artifacts/deployment/`에 생성했다.
+- 공개 검증 시각은 **2026-10-30 17:20:49 KST**다. Chromium + SwiftShader에서 관리형 환경의 프록시를 사용했으며 기존 프록시 CA를 브라우저가 신뢰하도록 구성하고 TLS 인증서 검증을 유지했다. 인증서 오류 무시 옵션을 사용하지 않았다.
+- Sites 게시 도구는 현재 세션에 제공되지 않아 GitHub Pages로 배포했다. 게임 코드·모델 원본·문서도 공개 저장소의 `main`에 push했다.
+- 최초 실행은 Pages 미활성화로 실패했고 API 활성화도 연결 권한 부족(HTTP 403)으로 거부되었다. 사용자가 Pages Source를 **GitHub Actions**로 설정한 뒤 워크플로를 재실행하여 해결했다. Node 개발 서버와 별도로 제공되는 사이트다.
 - 설치·재시작 지침은 환경 설정 초안에 저장했다. 초안 검토·저장·환경 게시와 Sites 웹 공개는 서로 다른 작업이다.
 - GPU 검증은 SwiftShader다. 실제 모바일 하드웨어·Safari·특정 GPU의 FPS, 전체 월드의 장시간 메모리 사용, Unity 빌드는 검증하지 않았다.
 - 관리형 브라우저의 `file://` 정책 차단을 우회하지 않았다. HTTP 실행과 서버 없는 HTML 렌더링은 각각 확인했다.

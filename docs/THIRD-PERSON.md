@@ -75,7 +75,7 @@ npm run build
 
 `npm run build`가 Three.js·GLTFLoader·모델 바이너리·JSON·CSS·게임 코드를 `index.html`에 포함한다. 런타임 CDN, 모델 URL, API 키, 외부 텍스처 요청이 없다. 빌드는 esbuild와 고정한 npm 의존성을 사용한다. Three.js의 라이선스는 `THIRD_PARTY_NOTICES.md`와 생성 HTML에 포함한다.
 
-현재 Node 서버는 기존 3000번 포트에서 새 생성물을 제공한다. 요청한 Sites 플러그인은 현재 세션의 도구·스킬 목록에서 게시 기능이 검색되지 않아 실행하지 못했다. Sites에 게시되었다거나 공개 URL이 있다고 주장하지 않는다. 게시 도구가 연결되면 이 단일 HTML을 업로드하고, 실제 URL에서 WebGL·모바일·저장·입력을 다시 확인해야 한다.
+공개 게임은 **https://weodlf.github.io/exit-north/** 에 GitHub Pages로 배포했다. 실제 HTTPS 페이지에서 리깅 캐릭터·WASD·E 조사·인벤토리·저장 복원·390px 모바일 조작을 확인했다. 요청한 Sites 플러그인의 게시 도구는 제공되지 않아 GitHub Pages를 사용했다. Node 서버는 개발용이며 현재 클라우드 머신의 수명에 종속된다. 배포 절차와 검증 범위는 [HOSTING.md](HOSTING.md), [VERIFICATION.md](VERIFICATION.md)에 기록한다.
 
 ## 검증 범위
 
