@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "runId": "run-45584954",
+  "status": "playing",
+  "chapterId": "ch1",
+  "nodeId": "ch1.home",
+  "turn": 0,
+  "stats": {
+    "hp": 92,
+    "maxHp": 100,
+    "hunger": 18,
+    "maxHunger": 100,
+    "dollars": 18,
+    "stealth": 76
+  },
+  "inventory": {
+    "bread": 1,
+    "canned_food": 1,
+    "medkit": 1,
+    "radio": 0,
+    "forged_id": 0
+  },
+  "flags": [],
+  "visited": [
+    "ch1.home"
+  ],
+  "rngState": 1163413844,
+  "journal": [],
+  "lastResult": null
+}

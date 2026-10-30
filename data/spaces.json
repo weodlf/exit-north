@@ -1,0 +1,1215 @@
+{
+  "schemaVersion": 1,
+  "character": {
+    "name": "윤",
+    "height": 1.9,
+    "jacket": "#526d72",
+    "pants": "#53594a",
+    "backpack": "#987c4b",
+    "skin": "#bc9a7a"
+  },
+  "controls": {
+    "walkSpeed": 2.3,
+    "runSpeed": 4.7,
+    "sneakSpeed": 1.15,
+    "interactionRadius": 2.7,
+    "playerRadius": 0.28
+  },
+  "scenes": {
+    "home_dawn": {
+      "theme": "village",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#929c99",
+      "fog": "#929b92",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#ffe1ae",
+      "sunIntensity": 2.6,
+      "exposure": 1.15,
+      "time": "05:42",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "wardrobe",
+          "label": "낡은 장롱",
+          "position": [
+            -3.4,
+            0,
+            -0.5
+          ],
+          "prop": "wardrobe",
+          "bindings": {
+            "ch1.home": [
+              "radio"
+            ]
+          }
+        },
+        {
+          "id": "coat",
+          "label": "아버지의 외투",
+          "position": [
+            3.6,
+            0,
+            -3.2
+          ],
+          "prop": "coat",
+          "bindings": {
+            "ch1.home": [
+              "coat"
+            ]
+          }
+        },
+        {
+          "id": "papers",
+          "label": "찢어진 서류",
+          "position": [
+            -3.2,
+            0,
+            -6.4
+          ],
+          "prop": "desk",
+          "bindings": {
+            "ch1.home": [
+              "papers"
+            ],
+            "ch1.passage": [
+              "forge"
+            ]
+          }
+        },
+        {
+          "id": "supplies",
+          "label": "비상 가방",
+          "position": [
+            3.5,
+            0,
+            -7.8
+          ],
+          "prop": "supplies",
+          "bindings": {
+            "ch1.passage": [
+              "supplies"
+            ]
+          }
+        },
+        {
+          "id": "door",
+          "label": "골목 끝의 문",
+          "position": [
+            0,
+            0,
+            -12
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch1.home": [
+              "leave"
+            ],
+            "ch1.passage": [
+              "back",
+              "depart"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "labor_yard": {
+      "theme": "camp",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#7e8988",
+      "fog": "#828c87",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#dce4dc",
+      "sunIntensity": 1.6,
+      "exposure": 1.15,
+      "time": "16:20",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "work_area",
+          "label": "작업장",
+          "position": [
+            0,
+            0,
+            -4
+          ],
+          "prop": "work",
+          "bindings": {
+            "ch2.arrival": [
+              "labor",
+              "careful"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "labor_tunnel": {
+      "theme": "camp",
+      "spawn": [
+        0,
+        0,
+        5
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#283d49",
+      "fog": "#334751",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#a3c4dc",
+      "sunIntensity": 1.2,
+      "exposure": 1.15,
+      "time": "23:16",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "ration",
+          "label": "배급 상자",
+          "position": [
+            -3,
+            0,
+            -1
+          ],
+          "prop": "supplies",
+          "bindings": {
+            "ch2.yard": [
+              "ration"
+            ]
+          }
+        },
+        {
+          "id": "rest",
+          "label": "벽에 기댈 자리",
+          "position": [
+            3,
+            0,
+            -2
+          ],
+          "prop": "bench",
+          "bindings": {
+            "ch2.yard": [
+              "rest"
+            ]
+          }
+        },
+        {
+          "id": "wall_gap",
+          "label": "벽 아래의 틈",
+          "position": [
+            0,
+            0,
+            -8
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch2.yard": [
+              "dig"
+            ],
+            "ch2.tunnel": [
+              "crawl",
+              "rush"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "frozen_river": {
+      "theme": "river",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#405867",
+      "fog": "#65818b",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#bcdaed",
+      "sunIntensity": 1.6,
+      "exposure": 1.15,
+      "time": "02:07",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "observe",
+          "label": "빛의 움직임",
+          "position": [
+            -3.5,
+            0,
+            -1
+          ],
+          "prop": "lamp",
+          "bindings": {
+            "ch3.bank": [
+              "observe"
+            ]
+          }
+        },
+        {
+          "id": "ice_crossing",
+          "label": "얼어붙은 강",
+          "position": [
+            0,
+            0,
+            -8
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch3.bank": [
+              "sprint",
+              "sneak"
+            ]
+          }
+        },
+        {
+          "id": "broker",
+          "label": "강가의 안내인",
+          "position": [
+            4,
+            0,
+            -4
+          ],
+          "prop": "person",
+          "bindings": {
+            "ch3.bank": [
+              "broker"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "river_shelter": {
+      "theme": "river",
+      "spawn": [
+        0,
+        0,
+        5
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#829b9d",
+      "fog": "#8ba2a0",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#ffe1ae",
+      "sunIntensity": 2.6,
+      "exposure": 1.15,
+      "time": "06:11",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "crate",
+          "label": "창고의 상자",
+          "position": [
+            -3,
+            0,
+            -2
+          ],
+          "prop": "supplies",
+          "bindings": {
+            "ch3.shelter": [
+              "search"
+            ]
+          }
+        },
+        {
+          "id": "city_exit",
+          "label": "도시로 이어지는 길",
+          "position": [
+            0,
+            0,
+            -10
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch3.shelter": [
+              "city"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "neon_market": {
+      "theme": "city",
+      "spawn": [
+        0,
+        0,
+        7
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#34424f",
+      "fog": "#485862",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#bbd3e1",
+      "sunIntensity": 0.9,
+      "exposure": 1.3,
+      "time": "20:34",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "work",
+          "label": "짐을 나르는 곳",
+          "position": [
+            -3.3,
+            0,
+            -2
+          ],
+          "prop": "work",
+          "bindings": {
+            "ch4.market": [
+              "work"
+            ]
+          }
+        },
+        {
+          "id": "food_stall",
+          "label": "골목의 식료품점",
+          "position": [
+            3.5,
+            0,
+            -4
+          ],
+          "prop": "supplies",
+          "bindings": {
+            "ch4.market": [
+              "buy"
+            ]
+          }
+        },
+        {
+          "id": "teahouse",
+          "label": "불 꺼진 찻집",
+          "position": [
+            0,
+            0,
+            -12
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch4.market": [
+              "contact"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "neon_teahouse": {
+      "theme": "city",
+      "spawn": [
+        0,
+        0,
+        5
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#34424f",
+      "fog": "#485862",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#bbd3e1",
+      "sunIntensity": 0.9,
+      "exposure": 1.3,
+      "time": "21:12",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "speakers",
+          "label": "낯선 소개자들",
+          "position": [
+            0,
+            0,
+            -4
+          ],
+          "prop": "person",
+          "bindings": {
+            "ch4.contact": [
+              "verify",
+              "trusted",
+              "cheap"
+            ]
+          }
+        },
+        {
+          "id": "exit",
+          "label": "시장으로 돌아가는 길",
+          "position": [
+            4,
+            0,
+            -1
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch4.contact": [
+              "return"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "southbound_road": {
+      "theme": "city",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#b3a48c",
+      "fog": "#b2a38e",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#ffd19c",
+      "sunIntensity": 2,
+      "exposure": 1.15,
+      "time": "17:40",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "road_exit",
+          "label": "남쪽으로 이어지는 길",
+          "position": [
+            0,
+            0,
+            -7
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch4.truck": [
+              "fast",
+              "quiet"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "monsoon_jungle": {
+      "theme": "jungle",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#60776d",
+      "fog": "#71867a",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#d0ddbd",
+      "sunIntensity": 1.6,
+      "exposure": 1.15,
+      "time": "04:53",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "cache",
+          "label": "처마 아래 보급품",
+          "position": [
+            -3,
+            0,
+            -2
+          ],
+          "prop": "supplies",
+          "bindings": {
+            "ch5.jungle": [
+              "cache"
+            ]
+          }
+        },
+        {
+          "id": "river_path",
+          "label": "마지막 강으로",
+          "position": [
+            0,
+            0,
+            -8
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch5.jungle": [
+              "river",
+              "sprint"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "mekong_crossing": {
+      "theme": "jungle",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#60776d",
+      "fog": "#71867a",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#d0ddbd",
+      "sunIntensity": 1.6,
+      "exposure": 1.15,
+      "time": "05:26",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "crossing",
+          "label": "불어난 물길",
+          "position": [
+            0,
+            0,
+            -7
+          ],
+          "prop": "exit",
+          "bindings": {
+            "ch5.river": [
+              "slow",
+              "rush"
+            ]
+          }
+        },
+        {
+          "id": "helper",
+          "label": "함께 건널 사람",
+          "position": [
+            3.5,
+            0,
+            -1
+          ],
+          "prop": "person",
+          "bindings": {
+            "ch5.river": [
+              "help"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "embassy_gate": {
+      "theme": "gate",
+      "spawn": [
+        0,
+        0,
+        6
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#9da5a2",
+      "fog": "#a3aca4",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#ffe2ad",
+      "sunIntensity": 2.8,
+      "exposure": 1.15,
+      "time": "06:09",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "gate",
+          "label": "마지막 철문",
+          "position": [
+            0,
+            0,
+            -7
+          ],
+          "prop": "gate",
+          "bindings": {
+            "ch5.gate": [
+              "run",
+              "careful",
+              "together"
+            ]
+          }
+        }
+      ],
+      "npcs": [
+        {
+          "position": [
+            2,
+            0,
+            -9
+          ],
+          "color": "#675d4b",
+          "path": [
+            [
+              2,
+              -9
+            ],
+            [
+              2,
+              -15
+            ]
+          ],
+          "speed": 0.45
+        },
+        {
+          "position": [
+            -3.5,
+            0,
+            -16
+          ],
+          "color": "#455650",
+          "path": [
+            [
+              -3.5,
+              -16
+            ],
+            [
+              -3.5,
+              -12
+            ]
+          ],
+          "speed": 0.3
+        }
+      ]
+    },
+    "settlement_morning": {
+      "theme": "morning",
+      "spawn": [
+        0,
+        0,
+        5
+      ],
+      "bounds": {
+        "minX": -11,
+        "maxX": 11,
+        "minZ": -28,
+        "maxZ": 12
+      },
+      "sky": "#a4b3b4",
+      "fog": "#acb9b2",
+      "fogNear": 18,
+      "fogFar": 90,
+      "sunColor": "#ffe5b6",
+      "sunIntensity": 3,
+      "exposure": 1.15,
+      "time": "07:18",
+      "camera": {
+        "distance": 4.7,
+        "height": 2.6,
+        "fov": 54
+      },
+      "hotspots": [
+        {
+          "id": "memory_book",
+          "label": "남겨진 사람들의 기록",
+          "position": [
+            0,
+            0,
+            -3
+          ],
+          "prop": "desk",
+          "bindings": {}
+        }
+      ],
+      "npcs": []
+    }
+  }
+}

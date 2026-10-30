@@ -1,0 +1,359 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "runId",
+    "status",
+    "chapterId",
+    "nodeId",
+    "turn",
+    "stats",
+    "inventory",
+    "flags",
+    "visited",
+    "rngState",
+    "journal",
+    "lastResult"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^run-[0-9a-f]{8}$"
+    },
+    "status": {
+      "enum": [
+        "playing",
+        "dead",
+        "escaped"
+      ]
+    },
+    "chapterId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.]*$"
+    },
+    "nodeId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.]*$"
+    },
+    "turn": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hp",
+        "maxHp",
+        "hunger",
+        "maxHunger",
+        "dollars",
+        "stealth"
+      ],
+      "properties": {
+        "hp": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "maxHp": {
+          "const": 100
+        },
+        "hunger": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "maxHunger": {
+          "const": 100
+        },
+        "dollars": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "stealth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 999
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "uniqueItems": true
+    },
+    "visited": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "journal": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "text",
+          "kind",
+          "starvation",
+          "chance",
+          "roll",
+          "delta",
+          "turn",
+          "nodeId"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "kind": {
+            "enum": [
+              "action",
+              "success",
+              "setback",
+              "item",
+              "death"
+            ]
+          },
+          "starvation": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "chance": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "roll": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "exclusiveMaximum": 1
+          },
+          "delta": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "hp",
+              "hunger",
+              "dollars",
+              "stealth"
+            ],
+            "properties": {
+              "hp": {
+                "type": "integer",
+                "minimum": -1000000,
+                "maximum": 1000000
+              },
+              "hunger": {
+                "type": "integer",
+                "minimum": -1000000,
+                "maximum": 1000000
+              },
+              "dollars": {
+                "type": "integer",
+                "minimum": -1000000,
+                "maximum": 1000000
+              },
+              "stealth": {
+                "type": "integer",
+                "minimum": -1000000,
+                "maximum": 1000000
+              }
+            }
+          },
+          "turn": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "nodeId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          }
+        }
+      },
+      "maxItems": 60
+    },
+    "lastResult": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "text",
+            "kind",
+            "starvation",
+            "chance",
+            "roll",
+            "delta"
+          ],
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "kind": {
+              "enum": [
+                "action",
+                "success",
+                "setback",
+                "item",
+                "death"
+              ]
+            },
+            "starvation": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "chance": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "roll": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "exclusiveMaximum": 1
+            },
+            "delta": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "hp",
+                "hunger",
+                "dollars",
+                "stealth"
+              ],
+              "properties": {
+                "hp": {
+                  "type": "integer",
+                  "minimum": -1000000,
+                  "maximum": 1000000
+                },
+                "hunger": {
+                  "type": "integer",
+                  "minimum": -1000000,
+                  "maximum": 1000000
+                },
+                "dollars": {
+                  "type": "integer",
+                  "minimum": -1000000,
+                  "maximum": 1000000
+                },
+                "stealth": {
+                  "type": "integer",
+                  "minimum": -1000000,
+                  "maximum": 1000000
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exit-north.local/schemas/game-state.schema.json",
+  "title": "Exit North global runtime state",
+  "description": "행동력 필드가 없다. turn은 누적 기록이다. 참조 무결성과 chapterId/nodeId 관계는 도메인 엔진이 추가 검증한다.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "dead"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "properties": {
+          "stats": {
+            "properties": {
+              "hp": {
+                "const": 0
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "else": {
+        "properties": {
+          "stats": {
+            "properties": {
+              "hp": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1411 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-30.1",
+  "title": "북쪽의 끝에서",
+  "startNode": "ch1.home",
+  "rules": {
+    "starvationDamage": 5,
+    "inventoryActionCost": {
+      "hp": 1,
+      "hunger": 2
+    },
+    "initialStats": {
+      "hp": 92,
+      "maxHp": 100,
+      "hunger": 18,
+      "maxHunger": 100,
+      "dollars": 18,
+      "stealth": 76
+    },
+    "initialInventory": {
+      "bread": 1,
+      "canned_food": 1,
+      "medkit": 1
+    },
+    "journalLimit": 60,
+    "movement": {
+      "segmentDistance": 2,
+      "modes": {
+        "walk": {
+          "label": "걷기",
+          "cost": {
+            "hp": 1,
+            "hunger": 1
+          }
+        },
+        "run": {
+          "label": "달리기",
+          "cost": {
+            "hp": 3,
+            "hunger": 1
+          }
+        },
+        "sneak": {
+          "label": "은신 이동",
+          "cost": {
+            "hp": 1,
+            "hunger": 3
+          }
+        }
+      }
+    }
+  },
+  "chapters": [
+    {
+      "id": "ch1",
+      "number": 1,
+      "title": "적막의 아침, 붉은 낙인",
+      "shortTitle": "적막의 아침",
+      "genre": "추리 · 자원 확보",
+      "location": "북쪽의 어느 마을 · 새벽",
+      "subtitle": "사라진 아버지의 자리에, 낡은 외투만 남았다.",
+      "objective": "집 안의 단서와 물자를 챙겨 골목으로 나가세요.",
+      "objectives": [
+        {
+          "label": "낡은 라디오 찾기",
+          "flag": "radio_found"
+        },
+        {
+          "label": "비상 자금 확보",
+          "flag": "cash_found"
+        },
+        {
+          "label": "신분증 단서 확인",
+          "flag": "id_clue"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "number": 2,
+      "title": "철조망과 갱도",
+      "shortTitle": "철조망과 갱도",
+      "genre": "생존 · 잠입",
+      "location": "이름 없는 노동교화소 · 밤",
+      "subtitle": "밤이 오면, 벽 너머에서 물이 흐른다.",
+      "objective": "노역을 버티고 갱도 끝의 출구를 찾으세요.",
+      "objectives": [
+        {
+          "label": "야간 통로 확보",
+          "flag": "tunnel_open"
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "number": 3,
+      "title": "얼어붙은 검은 강",
+      "shortTitle": "얼어붙은 검은 강",
+      "genre": "운 · 자원 선택",
+      "location": "두만강을 모티프로 한 가상의 접경 · 한밤",
+      "subtitle": "강 건너의 불빛은, 별보다 가까웠다.",
+      "objective": "관찰·체력·자금 중 무엇을 믿을지 결정하세요.",
+      "objectives": [
+        {
+          "label": "빛의 움직임 관찰",
+          "flag": "light_observed"
+        },
+        {
+          "label": "강 건너편 도달",
+          "flag": "river_crossed"
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "number": 4,
+      "title": "네온사인 미로의 방랑자",
+      "shortTitle": "네온사인 미로",
+      "genre": "정보 수집 · 심리전",
+      "location": "옌볜을 모티프로 한 가상의 도시 · 저녁",
+      "subtitle": "알아들을 수 있는 말이, 믿을 수 있는 말은 아니었다.",
+      "objective": "일과 거래로 자원을 관리하고 소개자의 말을 확인하세요.",
+      "objectives": [
+        {
+          "label": "소개자의 진술 대조",
+          "flag": "broker_verified"
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "number": 5,
+      "title": "마지막 철문을 향한 스퍼트",
+      "shortTitle": "마지막 철문",
+      "genre": "최종 돌파",
+      "location": "메콩강을 모티프로 한 가상의 국경 · 폭우",
+      "subtitle": "저 문 너머에서도, 내 이름을 부를 수 있을까.",
+      "objective": "남은 체력과 자원을 써서 보호를 요청하세요.",
+      "objectives": [
+        {
+          "label": "마지막 보급품 확인",
+          "flag": "jungle_cache"
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "number": 6,
+      "title": "에필로그: 남겨진 바람",
+      "shortTitle": "남겨진 바람",
+      "genre": "진실의 방",
+      "location": "대한민국 · 정착 지원 시설의 아침",
+      "subtitle": "나의 도착은, 누군가의 부재 위에 놓여 있다.",
+      "objective": "살아남은 이의 기록과 남겨진 이들의 목소리를 읽어 보세요.",
+      "objectives": []
+    }
+  ],
+  "items": {
+    "bread": {
+      "name": "검은 빵",
+      "description": "거친 한 조각. 허기 −24 · HP +4",
+      "kind": "consumable",
+      "icon": "bread",
+      "effects": {
+        "hp": 4,
+        "hunger": -24
+      }
+    },
+    "canned_food": {
+      "name": "통조림",
+      "description": "아껴 둔 한 끼. 허기 −38 · HP +8",
+      "kind": "consumable",
+      "icon": "can",
+      "effects": {
+        "hp": 8,
+        "hunger": -38
+      }
+    },
+    "medkit": {
+      "name": "구급약",
+      "description": "상처를 돌본다. HP +28",
+      "kind": "consumable",
+      "icon": "medical",
+      "effects": {
+        "hp": 28
+      }
+    },
+    "radio": {
+      "name": "낡은 외교 라디오",
+      "description": "외부 방송을 들을 수 있다. 강의 선택 확률에 영향을 준다.",
+      "kind": "clue",
+      "icon": "radio"
+    },
+    "forged_id": {
+      "name": "위조 신분증",
+      "description": "단서로 만든 허구의 신분증. 일부 선택의 결과 확률에 영향을 준다.",
+      "kind": "clue",
+      "icon": "identity"
+    }
+  },
+  "flags": {
+    "radio_found": "외부의 목소리",
+    "cash_found": "외투 속 달러",
+    "id_clue": "찢긴 신분증 단서",
+    "id_forged": "다른 이름",
+    "home_supplies": "챙긴 비상식량",
+    "prison_ration": "배급의 흔적",
+    "tunnel_open": "벽 너머의 통로",
+    "light_observed": "빛의 움직임",
+    "river_crossed": "강 건너의 발자국",
+    "river_cache": "빈집의 물자",
+    "broker_verified": "서로 맞는 이야기",
+    "jungle_cache": "젖지 않은 보급품",
+    "prison_rested": "벽에 기댄 짧은 휴식"
+  },
+  "scenes": {
+    "home_dawn": {
+      "environment": "room",
+      "assetKey": "environments/home-dawn",
+      "spawn": "door_inside",
+      "lighting": "cold_dawn",
+      "hotspots": [
+        "wardrobe",
+        "coat",
+        "papers",
+        "door"
+      ]
+    },
+    "labor_yard": {
+      "environment": "camp",
+      "assetKey": "environments/labor-yard",
+      "spawn": "yard_entry",
+      "lighting": "overcast",
+      "hotspots": [
+        "work_area",
+        "wall"
+      ]
+    },
+    "labor_tunnel": {
+      "environment": "camp",
+      "assetKey": "environments/labor-tunnel",
+      "spawn": "tunnel_entry",
+      "lighting": "night",
+      "hotspots": [
+        "ration",
+        "wall_gap",
+        "exit"
+      ]
+    },
+    "frozen_river": {
+      "environment": "river",
+      "assetKey": "environments/frozen-river",
+      "spawn": "near_bank",
+      "lighting": "moon_searchlight",
+      "hotspots": [
+        "observe",
+        "ice_crossing",
+        "broker"
+      ]
+    },
+    "river_shelter": {
+      "environment": "river",
+      "assetKey": "environments/river-shelter",
+      "spawn": "shelter_entry",
+      "lighting": "blue_dawn",
+      "hotspots": [
+        "crate",
+        "city_exit"
+      ]
+    },
+    "neon_market": {
+      "environment": "city",
+      "assetKey": "environments/neon-market",
+      "spawn": "market_entry",
+      "lighting": "neon_rain",
+      "hotspots": [
+        "work",
+        "food_stall",
+        "teahouse"
+      ]
+    },
+    "neon_teahouse": {
+      "environment": "city",
+      "assetKey": "environments/neon-teahouse",
+      "spawn": "table",
+      "lighting": "warm_low",
+      "hotspots": [
+        "speaker_a",
+        "speaker_b",
+        "exit"
+      ]
+    },
+    "southbound_road": {
+      "environment": "city",
+      "assetKey": "environments/southbound-road",
+      "spawn": "truck",
+      "lighting": "dusk",
+      "hotspots": [
+        "road_exit"
+      ]
+    },
+    "monsoon_jungle": {
+      "environment": "jungle",
+      "assetKey": "environments/monsoon-jungle",
+      "spawn": "forest_entry",
+      "lighting": "monsoon",
+      "hotspots": [
+        "cache",
+        "river_path",
+        "gate_path"
+      ]
+    },
+    "mekong_crossing": {
+      "environment": "jungle",
+      "assetKey": "environments/mekong-crossing",
+      "spawn": "river_bank",
+      "lighting": "storm",
+      "hotspots": [
+        "crossing",
+        "helper"
+      ]
+    },
+    "embassy_gate": {
+      "environment": "gate",
+      "assetKey": "environments/embassy-gate",
+      "spawn": "street",
+      "lighting": "rain_dawn",
+      "hotspots": [
+        "gate"
+      ]
+    },
+    "settlement_morning": {
+      "environment": "morning",
+      "assetKey": "environments/settlement-morning",
+      "spawn": "window",
+      "lighting": "warm_dawn",
+      "hotspots": [
+        "memory_book"
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "ch1.home",
+      "chapterId": "ch1",
+      "title": "돌아갈 수 없는\n아침이 밝았다.",
+      "text": "아버지의 신발이 사라졌다. 문턱에는 낯선 군화가 남긴 흙이 말라붙어 있다.\n\n창밖의 확성기는 오늘도 같은 노래를 틀지만, 우리 집만 소리가 나지 않는다. 골목에 발소리가 들리기 전, 무엇을 가져갈지 정해야 한다.",
+      "scene_3d": "home_dawn",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "radio",
+          "label": "장롱 뒤를 더듬는다",
+          "description": "감춰 둔 외교 라디오를 찾는다. 이후 확률 선택에 도움이 된다.",
+          "cost": {
+            "hp": 4,
+            "hunger": 9
+          },
+          "requires": {
+            "missingFlags": [
+              "radio_found"
+            ]
+          },
+          "outcome": {
+            "text": "먼지 속에서 낡은 라디오를 찾았다. 잡음 사이로, 모르는 도시의 아침이 들려온다.",
+            "target": "ch1.home",
+            "addItems": {
+              "radio": 1
+            },
+            "addFlags": [
+              "radio_found"
+            ]
+          }
+        },
+        {
+          "id": "coat",
+          "label": "아버지의 외투를 살핀다",
+          "description": "안감에 감춰진 비상 자금 28달러를 찾는다.",
+          "cost": {
+            "hp": 3,
+            "hunger": 7
+          },
+          "requires": {
+            "missingFlags": [
+              "cash_found"
+            ]
+          },
+          "outcome": {
+            "text": "안감의 실밥을 풀자 접힌 달러가 떨어진다. 아버지는 언제부터 준비하셨을까.",
+            "target": "ch1.home",
+            "effects": {
+              "dollars": 28
+            },
+            "addFlags": [
+              "cash_found"
+            ]
+          }
+        },
+        {
+          "id": "papers",
+          "label": "찢어진 서류를 맞춘다",
+          "description": "나중에 위조 신분증을 마련할 단서를 확보한다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 10
+          },
+          "requires": {
+            "missingFlags": [
+              "id_clue"
+            ]
+          },
+          "outcome": {
+            "text": "도장 자국과 낯선 이름. 서류 뒷면에는 아버지의 글씨로 약속 장소가 적혀 있다.",
+            "target": "ch1.home",
+            "addFlags": [
+              "id_clue"
+            ]
+          }
+        },
+        {
+          "id": "leave",
+          "label": "집을 나설 준비를 한다",
+          "description": "챙기지 않은 단서는 이 방에 남는다.",
+          "cost": {
+            "hp": 3,
+            "hunger": 6
+          },
+          "outcome": {
+            "text": "문고리를 잡는다. 손바닥에 묻은 먼지가, 아직 이곳이 집이었다고 말해 준다.",
+            "target": "ch1.passage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1.passage",
+      "chapterId": "ch1",
+      "title": "마지막으로,\n이름을 접어 넣는다.",
+      "text": "복도 끝의 불빛이 깜빡인다. 비상 가방은 가볍고, 주머니는 아직 차갑다.\n\n남겨진 서류를 쓸 수 있을지도 모른다. 하지만 지체하는 동안에도 몸은 지쳐 간다.",
+      "scene_3d": "home_dawn",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "forge",
+          "label": "단서로 다른 이름을 준비한다",
+          "description": "단서가 있다면 위조 신분증을 확보한다. 실제 제작 절차는 묘사하지 않는다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 4
+          },
+          "requires": {
+            "allFlags": [
+              "id_clue"
+            ],
+            "missingFlags": [
+              "id_forged"
+            ]
+          },
+          "outcome": {
+            "text": "접힌 서류 속 다른 이름이 내 이름을 덮는다. 종이 한 장이 나를 지킬 수 있을까.",
+            "target": "ch1.passage",
+            "addItems": {
+              "forged_id": 1
+            },
+            "addFlags": [
+              "id_forged"
+            ]
+          }
+        },
+        {
+          "id": "supplies",
+          "label": "비상식량을 챙긴다",
+          "description": "남겨진 식량값 8달러를 두고 빵과 통조림을 챙긴다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 4,
+            "dollars": 8
+          },
+          "requires": {
+            "missingFlags": [
+              "home_supplies"
+            ]
+          },
+          "outcome": {
+            "text": "식량을 가방에 넣고 값을 남긴다. 돌아와서 갚겠다는 약속 대신, 할 수 있는 작은 일을 했다.",
+            "target": "ch1.passage",
+            "addItems": {
+              "bread": 1,
+              "canned_food": 1
+            },
+            "addFlags": [
+              "home_supplies"
+            ]
+          }
+        },
+        {
+          "id": "back",
+          "label": "방을 한 번 더 돌아본다",
+          "description": "두고 온 단서를 살펴볼 수 있지만 이동 비용이 든다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 5
+          },
+          "outcome": {
+            "text": "아직 찾을 것이 남아 있을까. 어둠 속으로 다시 몸을 돌렸다.",
+            "target": "ch1.home"
+          }
+        },
+        {
+          "id": "depart",
+          "label": "낯선 골목으로 향한다",
+          "description": "이야기의 고정 사건: 첫 탈출 시도는 검문에 막히고 교화소로 이어진다.",
+          "cost": {
+            "hp": 6,
+            "hunger": 9
+          },
+          "outcome": {
+            "text": "골목에서 불빛이 멈춘다. 질문보다 먼저 팔이 붙잡힌다. 이후의 며칠은, 흔들리는 차창과 철문의 소리로만 남았다.",
+            "target": "ch2.arrival"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2.arrival",
+      "chapterId": "ch2",
+      "title": "숫자로 불리는\n하루가 시작된다.",
+      "text": "이곳에서는 이름 대신 번호를 부른다. 아침부터 이어지는 노역은, 어제의 상처가 아물 시간을 주지 않는다.\n\n벽 아래에서 바람이 새어 나온다. 밤까지 버틸 수 있다면, 길을 찾아볼 수 있을 것이다.",
+      "scene_3d": "labor_yard",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "labor",
+          "label": "할당된 노역을 버틴다",
+          "description": "체력을 써서 하루를 넘긴다. 숨겨 둔 물품을 교환해 4달러를 얻는다.",
+          "cost": {
+            "hp": 12,
+            "hunger": 12
+          },
+          "outcome": {
+            "text": "쉴 틈 없이 돌을 날랐다. 손바닥은 갈라졌지만, 동료가 건넨 작은 물품을 교환할 수 있었다.",
+            "target": "ch2.yard",
+            "effects": {
+              "dollars": 4,
+              "stealth": -3
+            }
+          }
+        },
+        {
+          "id": "careful",
+          "label": "눈에 띄지 않게 일한다",
+          "description": "체력 소모는 줄지만 시간이 길어져 허기가 더 높아진다.",
+          "cost": {
+            "hp": 7,
+            "hunger": 18
+          },
+          "outcome": {
+            "text": "고개를 낮추고 천천히 움직였다. 배는 더 고프지만, 누군가의 시선을 피했다.",
+            "target": "ch2.yard",
+            "effects": {
+              "stealth": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2.yard",
+      "chapterId": "ch2",
+      "title": "벽 너머에서\n바람이 들려온다.",
+      "text": "밤이 찾아와도 배고픔은 잠들지 않는다. 느슨한 벽 아래의 틈은, 누군가가 오래전부터 기다리던 곳처럼 보인다.",
+      "scene_3d": "labor_tunnel",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "ration",
+          "label": "식량을 교환한다",
+          "description": "8달러를 써서 통조림 하나를 확보한다. 한 번만 가능하다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 5,
+            "dollars": 8
+          },
+          "requires": {
+            "missingFlags": [
+              "prison_ration"
+            ]
+          },
+          "outcome": {
+            "text": "작은 통조림이 손에 들어왔다. 지금 먹을지, 더 긴 밤을 위해 남길지 결정해야 한다.",
+            "target": "ch2.yard",
+            "addItems": {
+              "canned_food": 1
+            },
+            "addFlags": [
+              "prison_ration"
+            ]
+          }
+        },
+        {
+          "id": "rest",
+          "label": "벽에 기대 숨을 고른다",
+          "description": "한 번만 가능. HP 2를 쓴 뒤 9를 회복한다. 순회복 7, 허기 +14.",
+          "cost": {
+            "hp": 2,
+            "hunger": 14
+          },
+          "outcome": {
+            "text": "짧은 휴식으로 떨리던 손이 조금 진정된다. 빈속은 더 선명해졌다.",
+            "target": "ch2.yard",
+            "effects": {
+              "hp": 9
+            },
+            "addFlags": [
+              "prison_rested"
+            ]
+          },
+          "requires": {
+            "missingFlags": [
+              "prison_rested"
+            ]
+          }
+        },
+        {
+          "id": "dig",
+          "label": "틈을 넓혀 통로를 연다",
+          "description": "큰 체력 소모를 감수하고 야간 탈출 통로를 확보한다.",
+          "cost": {
+            "hp": 14,
+            "hunger": 14
+          },
+          "outcome": {
+            "text": "돌가루가 목을 막았다. 마침내 틈 너머에서, 철문 안에서는 맡을 수 없던 공기가 들어온다.",
+            "target": "ch2.tunnel",
+            "addFlags": [
+              "tunnel_open"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2.tunnel",
+      "chapterId": "ch2",
+      "title": "몸 하나가 지날\n어둠의 폭.",
+      "text": "벽은 끝났지만 어둠은 끝나지 않았다. 멀리서 누군가의 고함이 들린다. 빠르게 움직일 것인가, 숨을 죽일 것인가.",
+      "scene_3d": "labor_tunnel",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "crawl",
+          "label": "조심스럽게 기어 나간다",
+          "description": "HP를 아끼지만 허기가 크게 오른다. 실패해도 부상을 입고 탈출한다.",
+          "cost": {
+            "hp": 7,
+            "hunger": 18
+          },
+          "chance": {
+            "base": 0.68,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.0015
+              }
+            ]
+          },
+          "success": {
+            "text": "아무도 돌아보지 않았다. 몸을 일으키자 저 멀리 검은 강이 보인다.",
+            "target": "ch3.bank",
+            "effects": {
+              "stealth": 5
+            }
+          },
+          "failure": {
+            "text": "돌이 굴러 소리가 났다. 어둠을 뚫고 달리는 동안 팔을 다쳤지만, 강가까지 도착했다.",
+            "target": "ch3.bank",
+            "effects": {
+              "hp": -10,
+              "stealth": -8
+            }
+          }
+        },
+        {
+          "id": "rush",
+          "label": "남은 힘으로 빠져나간다",
+          "description": "허기는 덜 오르지만 HP 소모가 크다. 실패 시 추가 부상.",
+          "cost": {
+            "hp": 18,
+            "hunger": 8
+          },
+          "chance": {
+            "base": 0.83,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.001
+              }
+            ]
+          },
+          "success": {
+            "text": "뒤를 돌아보지 않고 달렸다. 폐가 타는 것 같았지만 발소리는 멀어졌다.",
+            "target": "ch3.bank"
+          },
+          "failure": {
+            "text": "철망에 옷이 걸렸다. 상처를 남긴 채 몸을 빼내, 강가의 어둠 속으로 넘어졌다.",
+            "target": "ch3.bank",
+            "effects": {
+              "hp": -8,
+              "stealth": -10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3.bank",
+      "chapterId": "ch3",
+      "title": "얼음 아래로,\n국경이 흐른다.",
+      "text": "차가운 물 위로 흰빛이 지나간다. 얼음은 단단해 보이지만, 그 아래에서 무엇이 움직이는지 알 수 없다.\n\n먼저 건넌 사람은 돌아보지 않았다. 강가에는 값을 부르는 낯선 사람이 서 있다. 이제 무엇을 믿을 것인가.",
+      "scene_3d": "frozen_river",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "observe",
+          "label": "불빛의 움직임을 지켜본다",
+          "description": "허기를 감수하고 단서를 얻는다. 이후 도강 확률 +12%p.",
+          "cost": {
+            "hp": 4,
+            "hunger": 10
+          },
+          "requires": {
+            "missingFlags": [
+              "light_observed"
+            ]
+          },
+          "outcome": {
+            "text": "오랫동안 빛을 바라보았다. 아무것도 확실하지 않지만, 막연한 두려움에 작은 윤곽이 생겼다.",
+            "target": "ch3.bank",
+            "effects": {
+              "stealth": 6
+            },
+            "addFlags": [
+              "light_observed"
+            ]
+          }
+        },
+        {
+          "id": "sprint",
+          "label": "얼음 위를 빠르게 달린다",
+          "description": "HP 소모가 크다. 라디오와 관찰 단서가 확률에 영향을 준다.",
+          "cost": {
+            "hp": 18,
+            "hunger": 8
+          },
+          "chance": {
+            "base": 0.5,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.002
+              },
+              {
+                "flag": "radio_found",
+                "add": 0.12
+              },
+              {
+                "flag": "light_observed",
+                "add": 0.12
+              }
+            ]
+          },
+          "success": {
+            "text": "발아래서 얼음이 울었다. 멈추지 않고 달려, 건너편의 젖은 흙을 붙잡았다.",
+            "target": "ch3.shelter",
+            "addFlags": [
+              "river_crossed"
+            ]
+          },
+          "failure": {
+            "text": "얼음이 무너지며 다리가 물에 잠겼다. 가까스로 기어 나왔지만 몸과 주머니에서 온기가 빠져나갔다.",
+            "target": "ch3.shelter",
+            "effects": {
+              "hp": -18,
+              "dollars": -8,
+              "stealth": -16
+            },
+            "addFlags": [
+              "river_crossed"
+            ]
+          }
+        },
+        {
+          "id": "sneak",
+          "label": "그늘을 따라 천천히 건넌다",
+          "description": "HP는 아끼지만 허기가 크게 오른다. 실패하면 추가 부상.",
+          "cost": {
+            "hp": 8,
+            "hunger": 18
+          },
+          "chance": {
+            "base": 0.64,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.0015
+              },
+              {
+                "flag": "light_observed",
+                "add": 0.12
+              }
+            ]
+          },
+          "success": {
+            "text": "아주 오래 걸린 것 같았다. 고개를 들었을 때, 불빛은 이미 등 뒤에 있었다.",
+            "target": "ch3.shelter",
+            "effects": {
+              "stealth": 4
+            },
+            "addFlags": [
+              "river_crossed"
+            ]
+          },
+          "failure": {
+            "text": "빛이 멈춘 순간 몸을 던졌다. 차가운 물에 살이 베였지만 강 건너에 닿았다.",
+            "target": "ch3.shelter",
+            "effects": {
+              "hp": -14,
+              "stealth": -12
+            },
+            "addFlags": [
+              "river_crossed"
+            ]
+          }
+        },
+        {
+          "id": "broker",
+          "label": "안내인에게 자금을 건넨다",
+          "description": "40달러를 쓴다. 실패하면 강가에 남고 자금은 돌려받지 못한다.",
+          "cost": {
+            "hp": 6,
+            "hunger": 10,
+            "dollars": 40
+          },
+          "chance": {
+            "base": 0.82,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "flag": "radio_found",
+                "add": 0.08
+              }
+            ]
+          },
+          "success": {
+            "text": "돈을 받은 사람은 말없이 고개를 끄덕였다. 낯선 발자국을 따라 강을 넘었다.",
+            "target": "ch3.shelter",
+            "addFlags": [
+              "river_crossed"
+            ]
+          },
+          "failure": {
+            "text": "기다리라는 말만 남기고 안내인이 사라졌다. 찬 바람 속에서, 다시 혼자 선택해야 한다.",
+            "target": "ch3.bank",
+            "effects": {
+              "hp": -8,
+              "stealth": -6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3.shelter",
+      "chapterId": "ch3",
+      "title": "낯선 지붕 아래,\n처음 맞는 숨.",
+      "text": "빈 창고의 문이 바람에 흔들린다. 강은 건넜지만, 안전하다는 말은 아직 멀다. 젖은 옷을 누르며 몸의 상태를 살핀다.",
+      "scene_3d": "river_shelter",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "search",
+          "label": "남겨진 상자를 확인한다",
+          "description": "일회성 수색. 성공 시 통조림과 구급약을 하나씩 얻는다.",
+          "cost": {
+            "hp": 5,
+            "hunger": 9
+          },
+          "requires": {
+            "missingFlags": [
+              "river_cache"
+            ]
+          },
+          "chance": {
+            "base": 0.9,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": []
+          },
+          "success": {
+            "text": "상자 바닥에 통조림과 밀봉된 구급약이 남아 있었다. 이름 모를 누군가에게 짧게 고개를 숙인다.",
+            "target": "ch3.shelter",
+            "addItems": {
+              "canned_food": 1,
+              "medkit": 1
+            },
+            "addFlags": [
+              "river_cache"
+            ]
+          },
+          "failure": {
+            "text": "상자는 비어 있었다. 날카로운 모서리에 손을 베었다.",
+            "target": "ch3.shelter",
+            "effects": {
+              "hp": -3
+            },
+            "addFlags": [
+              "river_cache"
+            ]
+          }
+        },
+        {
+          "id": "city",
+          "label": "도시의 불빛을 향해 간다",
+          "description": "이동 전에 식량과 상처를 점검할 수 있다.",
+          "cost": {
+            "hp": 4,
+            "hunger": 6
+          },
+          "outcome": {
+            "text": "새벽 기차 소리가 먼 곳에서 들렸다. 알아볼 수 없는 간판들이 하나둘 눈에 들어온다.",
+            "target": "ch4.market"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4.market",
+      "chapterId": "ch4",
+      "title": "불빛은 많고,\n믿을 말은 적다.",
+      "text": "시장 안에서는 누구도 오래 눈을 마주치지 않는다. 익숙한 말투로 다가오는 사람이 있지만, 친절함만으로 다음 길을 맡길 수는 없다.\n\n돈을 벌고 식량을 구할 수 있다. 대신 이곳에 머무는 동안에도 몸은 지친다.",
+      "scene_3d": "neon_market",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "work",
+          "label": "일용직으로 짐을 나른다",
+          "description": "HP와 허기를 소모해 24달러를 번다. 반복할수록 생존 부담이 쌓인다.",
+          "cost": {
+            "hp": 10,
+            "hunger": 14
+          },
+          "outcome": {
+            "text": "짐을 나르는 동안 몇 번이나 이름을 묻는 소리가 들렸다. 대답하지 않고 일을 끝냈다.",
+            "target": "ch4.market",
+            "effects": {
+              "dollars": 24,
+              "stealth": -6
+            }
+          }
+        },
+        {
+          "id": "buy",
+          "label": "식량을 산다",
+          "description": "12달러에 빵 하나. 구입과 섭취는 각각 하나의 행동이다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 4,
+            "dollars": 12
+          },
+          "outcome": {
+            "text": "종이에 싼 빵을 받았다. 온기가 사라지기 전에 먹고 싶지만, 다음 밤이 먼저 떠올랐다.",
+            "target": "ch4.market",
+            "addItems": {
+              "bread": 1
+            }
+          }
+        },
+        {
+          "id": "contact",
+          "label": "소개자를 만나 본다",
+          "description": "서로 다른 이야기를 비교하거나 약속을 믿고 출발한다.",
+          "cost": {
+            "hp": 3,
+            "hunger": 8
+          },
+          "outcome": {
+            "text": "어두운 찻집의 문이 열렸다. 한 사람이 빈 의자를 손으로 가리켰다.",
+            "target": "ch4.contact"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4.contact",
+      "chapterId": "ch4",
+      "title": "그 사람은\n내 이름을 묻지 않았다.",
+      "text": "한 사람은 내일이면 도착한다고 말한다. 다른 사람은 멀고 오래 걸린다고 말한다.\n\n라디오에서 들었던 말과 서로의 설명을 대조할 수 있다. 빨리 끝나는 약속이, 안전한 약속일까.",
+      "scene_3d": "neon_teahouse",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "verify",
+          "label": "이야기의 앞뒤를 확인한다",
+          "description": "시간과 허기를 써서 모순을 찾는다. 검증된 선택을 해제한다.",
+          "cost": {
+            "hp": 4,
+            "hunger": 9
+          },
+          "requires": {
+            "missingFlags": [
+              "broker_verified"
+            ]
+          },
+          "outcome": {
+            "text": "시간과 만날 사람에 대한 설명이 서로 맞았다. 불확실함이 사라지지는 않았지만, 거짓 약속 하나는 걸러 냈다.",
+            "target": "ch4.contact",
+            "effects": {
+              "stealth": 5
+            },
+            "addFlags": [
+              "broker_verified"
+            ]
+          }
+        },
+        {
+          "id": "trusted",
+          "label": "확인한 사람과 떠난다",
+          "description": "36달러. 진술을 대조했다면 확률 판정 없이 다음 구간으로 간다.",
+          "cost": {
+            "hp": 6,
+            "hunger": 12,
+            "dollars": 36
+          },
+          "requires": {
+            "allFlags": [
+              "broker_verified"
+            ]
+          },
+          "outcome": {
+            "text": "꼭 필요한 말만 나누었다. 낡은 차의 문이 닫히고, 도시의 간판들이 뒤로 흘러갔다.",
+            "target": "ch4.truck"
+          }
+        },
+        {
+          "id": "cheap",
+          "label": "빠르고 저렴한 약속에 맡긴다",
+          "description": "24달러. 실패하면 부상을 입고 시장으로 돌아온다.",
+          "cost": {
+            "hp": 9,
+            "hunger": 10,
+            "dollars": 24
+          },
+          "chance": {
+            "base": 0.38,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "flag": "id_forged",
+                "add": 0.12
+              }
+            ]
+          },
+          "success": {
+            "text": "불안한 약속이었지만 차는 도시를 벗어났다. 창밖을 보며 오랫동안 숨을 참았다.",
+            "target": "ch4.truck"
+          },
+          "failure": {
+            "text": "약속한 사람은 오지 않았다. 기다림이 길어진 끝에 검문을 피해 도망쳤다.",
+            "target": "ch4.market",
+            "effects": {
+              "hp": -12,
+              "stealth": -12
+            }
+          }
+        },
+        {
+          "id": "return",
+          "label": "시장으로 돌아간다",
+          "description": "돈과 식량을 다시 준비할 수 있다.",
+          "cost": {
+            "hp": 2,
+            "hunger": 4
+          },
+          "outcome": {
+            "text": "자리를 일어섰다. 아직 선택하지 않았다는 사실이 작은 위안이었다.",
+            "target": "ch4.market"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4.truck",
+      "chapterId": "ch4",
+      "title": "말이 사라진 뒤,\n바퀴 소리만 남았다.",
+      "text": "길은 여러 번 방향을 바꾸었다. 차가 멈췄을 때는 글자를 읽을 수 없는 땅이었고, 공기는 물을 머금은 것처럼 무거웠다.",
+      "scene_3d": "southbound_road",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "fast",
+          "label": "몸을 일으켜 바로 이동한다",
+          "description": "긴 이동을 짧게 끝낸다. HP 소모가 더 크다.",
+          "cost": {
+            "hp": 8,
+            "hunger": 10
+          },
+          "outcome": {
+            "text": "굳은 다리를 끌어 움직였다. 앞선 사람의 그림자가 숲속에서 흔들린다.",
+            "target": "ch5.jungle"
+          }
+        },
+        {
+          "id": "quiet",
+          "label": "주위를 살피며 뒤따른다",
+          "description": "HP를 아끼는 대신 허기가 더 높아진다.",
+          "cost": {
+            "hp": 4,
+            "hunger": 16
+          },
+          "outcome": {
+            "text": "젖은 발자국을 조심스럽게 따라갔다. 빗소리가 숨소리를 덮는다.",
+            "target": "ch5.jungle",
+            "effects": {
+              "stealth": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch5.jungle",
+      "chapterId": "ch5",
+      "title": "길의 끝에,\n문 하나가 있다고 했다.",
+      "text": "빗물이 목덜미로 흘러든다. 숲은 끝나지 않을 것 같고, 멀리서 부르는 소리는 바람과 구별되지 않는다.\n\n마지막 강과 철문이 남아 있다. 지금 가진 것이 전부다.",
+      "scene_3d": "monsoon_jungle",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "cache",
+          "label": "처마 아래 보급품을 확인한다",
+          "description": "한 번만 가능하다. 통조림 하나를 확보한다.",
+          "cost": {
+            "hp": 5,
+            "hunger": 9
+          },
+          "requires": {
+            "missingFlags": [
+              "jungle_cache"
+            ]
+          },
+          "outcome": {
+            "text": "젖지 않은 통조림이 남아 있었다. 포장을 쥔 손이 빗물 속에서 떨렸다.",
+            "target": "ch5.jungle",
+            "addItems": {
+              "canned_food": 1
+            },
+            "addFlags": [
+              "jungle_cache"
+            ]
+          }
+        },
+        {
+          "id": "river",
+          "label": "강 쪽으로 조심스럽게 움직인다",
+          "description": "체력을 아끼며 마지막 도강 지점으로 간다.",
+          "cost": {
+            "hp": 8,
+            "hunger": 12
+          },
+          "outcome": {
+            "text": "나무 사이로 흐린 물빛이 보인다. 이 강을 넘으면, 도움을 청할 문이 있다고 했다.",
+            "target": "ch5.river"
+          }
+        },
+        {
+          "id": "sprint",
+          "label": "추격 소리를 뒤로하고 달린다",
+          "description": "HP를 크게 써서 시간을 줄인다. 실패 시 추가 부상.",
+          "cost": {
+            "hp": 18,
+            "hunger": 8
+          },
+          "chance": {
+            "base": 0.76,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.002
+              }
+            ]
+          },
+          "success": {
+            "text": "발이 땅에 닿는 감각이 희미해졌다. 숲과 물길을 지나, 마침내 철문이 보였다.",
+            "target": "ch5.gate"
+          },
+          "failure": {
+            "text": "젖은 비탈에서 넘어졌다. 다리를 절며 물길을 건넜고, 숨이 끊어질 듯한 순간 철문이 보였다.",
+            "target": "ch5.gate",
+            "effects": {
+              "hp": -14,
+              "stealth": -10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch5.river",
+      "chapterId": "ch5",
+      "title": "또 하나의 강,\n마지막일지 모를 숨.",
+      "text": "불어난 물이 짙은 갈색으로 흐른다. 옷에 밴 비와 땀의 경계가 사라졌다. 남은 체력과 자금을 다시 센다.",
+      "scene_3d": "mekong_crossing",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "slow",
+          "label": "천천히 물길을 건넌다",
+          "description": "HP는 적게 쓰고 허기는 크게 높아진다.",
+          "cost": {
+            "hp": 7,
+            "hunger": 17
+          },
+          "chance": {
+            "base": 0.72,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.001
+              }
+            ]
+          },
+          "success": {
+            "text": "오래 버틴 끝에 발밑의 흙이 단단해졌다. 앞쪽에 철문이 서 있다.",
+            "target": "ch5.gate"
+          },
+          "failure": {
+            "text": "강물에 휩쓸려 바위에 부딪혔다. 일행이 건넨 손을 붙잡고 겨우 물 밖으로 나왔다.",
+            "target": "ch5.gate",
+            "effects": {
+              "hp": -12
+            }
+          }
+        },
+        {
+          "id": "rush",
+          "label": "빠르게 건너편으로 나아간다",
+          "description": "허기 증가를 줄이고 HP를 더 소모한다.",
+          "cost": {
+            "hp": 16,
+            "hunger": 8
+          },
+          "chance": {
+            "base": 0.86,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.001
+              }
+            ]
+          },
+          "success": {
+            "text": "가쁜 숨을 몰아쉬며 물 밖으로 나왔다. 누군가 멀리 보이는 문을 가리킨다.",
+            "target": "ch5.gate"
+          },
+          "failure": {
+            "text": "물속에 짐을 떨어뜨렸다. 몸을 돌리는 동안 어깨를 다쳤지만, 반대편에 도착했다.",
+            "target": "ch5.gate",
+            "effects": {
+              "hp": -8,
+              "dollars": -6
+            }
+          }
+        },
+        {
+          "id": "help",
+          "label": "남은 자금으로 도움을 구한다",
+          "description": "24달러를 쓰고 확률 판정 없이 건넌다.",
+          "cost": {
+            "hp": 4,
+            "hunger": 8,
+            "dollars": 24
+          },
+          "outcome": {
+            "text": "혼자서는 붙잡지 못했을 손이 내 팔을 끌어올렸다. 강 건너에서 철문을 향해 걸었다.",
+            "target": "ch5.gate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch5.gate",
+      "chapterId": "ch5",
+      "title": "저 문 너머에서,\n이름을 부를 수 있을까.",
+      "text": "시야 끝에 대한민국을 상징하는 작은 표식이 보인다. 그러나 문은 아직 닫혀 있다.\n\n도망치는 몸으로 달려온 길의 끝에서, 처음으로 멈춰 서서 도움을 청해야 한다.",
+      "scene_3d": "embassy_gate",
+      "camera_mode": "third_person_follow",
+      "choices": [
+        {
+          "id": "run",
+          "label": "철문을 향해 달린다",
+          "description": "큰 체력 소모. 실패하면 추가 부상을 입은 뒤 보호를 요청한다.",
+          "cost": {
+            "hp": 12,
+            "hunger": 7
+          },
+          "chance": {
+            "base": 0.8,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.001
+              }
+            ]
+          },
+          "success": {
+            "text": "손바닥으로 문을 두드렸다. 목소리가 나오지 않아, 몇 번이고 두드렸다. 안쪽에서 누군가 다가왔다.",
+            "target": "ch6.memory"
+          },
+          "failure": {
+            "text": "마지막 걸음에서 무릎이 꺾였다. 문을 붙잡은 손만은 놓지 않았다. 누군가가 내 목소리를 들었다.",
+            "target": "ch6.memory",
+            "effects": {
+              "hp": -10
+            }
+          }
+        },
+        {
+          "id": "careful",
+          "label": "숨을 낮추고 문까지 간다",
+          "description": "HP를 아끼지만 허기가 크게 오른다. 신분증 단서가 확률에 영향을 준다.",
+          "cost": {
+            "hp": 6,
+            "hunger": 14
+          },
+          "chance": {
+            "base": 0.65,
+            "min": 0.1,
+            "max": 0.96,
+            "modifiers": [
+              {
+                "stat": "stealth",
+                "factor": 0.002
+              },
+              {
+                "flag": "id_forged",
+                "add": 0.1
+              }
+            ]
+          },
+          "success": {
+            "text": "문 앞에 서서 이름을 말했다. 오랫동안 다른 이름으로 살아왔기에, 첫 음절이 낯설었다.",
+            "target": "ch6.memory"
+          },
+          "failure": {
+            "text": "뒤를 돌아보는 사이 몸을 부딪쳤다. 피 묻은 손으로 문을 두드리며, 내 이름을 말했다.",
+            "target": "ch6.memory",
+            "effects": {
+              "hp": -12
+            }
+          }
+        },
+        {
+          "id": "together",
+          "label": "일행과 함께 보호를 요청한다",
+          "description": "앞서 소개자의 진술을 확인했다면 함께 문 앞에 선다.",
+          "cost": {
+            "hp": 8,
+            "hunger": 10
+          },
+          "requires": {
+            "allFlags": [
+              "broker_verified"
+            ]
+          },
+          "outcome": {
+            "text": "혼자 말할 수 없던 문장을 함께 말했다. 문이 열리고, 누군가 우리를 안으로 불렀다.",
+            "target": "ch6.memory"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch6.memory",
+      "chapterId": "ch6",
+      "title": "나는 도착했다.\n모두가 오지는 못했다.",
+      "text": "아침에 내 이름을 불러 주는 사람이 있다. 정착 지원 시설의 창문으로 바람이 들어오고, 밥이 식기 전에 먹어도 된다는 말을 듣는다.\n\n하지만 아버지가 그날 어디로 갔는지는 아직 모른다. 함께 강가에 섰던 사람들의 이름도 모두 알지 못한다.\n\n살아남았다는 말은, 모든 것이 끝났다는 말이 아니었다. 나는 내가 기억하는 사람들을 적는다. 그들이 숫자만으로 남지 않도록.",
+      "scene_3d": "settlement_morning",
+      "camera_mode": "third_person_follow",
+      "choices": [],
+      "type": "ending"
+    }
+  ]
+}

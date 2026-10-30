@@ -1,0 +1,851 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "revision",
+    "title",
+    "startNode",
+    "rules",
+    "chapters",
+    "items",
+    "flags",
+    "scenes",
+    "nodes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "revision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "startNode": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.]*$"
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "starvationDamage",
+        "inventoryActionCost",
+        "initialStats",
+        "initialInventory",
+        "journalLimit",
+        "movement"
+      ],
+      "properties": {
+        "starvationDamage": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "inventoryActionCost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hp",
+            "hunger"
+          ],
+          "properties": {
+            "hp": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "hunger": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "dollars": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "items": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$"
+              },
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 999
+              }
+            }
+          }
+        },
+        "initialStats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hp",
+            "maxHp",
+            "hunger",
+            "maxHunger",
+            "dollars",
+            "stealth"
+          ],
+          "properties": {
+            "hp": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "maxHp": {
+              "const": 100
+            },
+            "hunger": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "maxHunger": {
+              "const": 100
+            },
+            "dollars": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "stealth": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        },
+        "initialInventory": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 999
+          }
+        },
+        "journalLimit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        },
+        "movement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "segmentDistance",
+            "modes"
+          ],
+          "properties": {
+            "segmentDistance": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 10
+            },
+            "modes": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "walk",
+                "run",
+                "sneak"
+              ],
+              "properties": {
+                "walk": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "cost"
+                  ],
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "cost": {
+                      "$ref": "#/definitions/cost"
+                    }
+                  }
+                },
+                "run": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "cost"
+                  ],
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "cost": {
+                      "$ref": "#/definitions/cost"
+                    }
+                  }
+                },
+                "sneak": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "cost"
+                  ],
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "cost": {
+                      "$ref": "#/definitions/cost"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "number",
+          "title",
+          "shortTitle",
+          "genre",
+          "location",
+          "subtitle",
+          "objective",
+          "objectives"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "shortTitle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "genre": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "subtitle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "flag"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4000
+                },
+                "flag": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_.]*$"
+                }
+              }
+            }
+          }
+        }
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "items": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description",
+          "kind",
+          "icon"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "kind": {
+            "enum": [
+              "consumable",
+              "clue"
+            ]
+          },
+          "icon": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "effects": {
+            "$ref": "#/definitions/effects"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "consumable"
+                }
+              },
+              "type": "object"
+            },
+            "then": {
+              "required": [
+                "effects"
+              ],
+              "type": "object",
+              "properties": {
+                "effects": {}
+              }
+            }
+          }
+        ]
+      },
+      "minProperties": 1
+    },
+    "flags": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      }
+    },
+    "scenes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "environment",
+          "assetKey",
+          "spawn",
+          "lighting",
+          "hotspots"
+        ],
+        "properties": {
+          "environment": {
+            "enum": [
+              "room",
+              "camp",
+              "river",
+              "city",
+              "jungle",
+              "gate",
+              "morning"
+            ]
+          },
+          "assetKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "spawn": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "lighting": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "hotspots": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_.]*$"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "chapterId",
+          "title",
+          "text",
+          "scene_3d",
+          "camera_mode",
+          "choices"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "chapterId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "scene_3d": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "camera_mode": {
+            "enum": [
+              "fixed_inspection",
+              "isometric_survival",
+              "third_person_follow",
+              "overhead_crossing",
+              "third_person_social",
+              "dialogue_closeup",
+              "first_person_reflection"
+            ]
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/choice"
+            }
+          },
+          "type": {
+            "const": "ending"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "const": "ending"
+                }
+              },
+              "type": "object"
+            },
+            "then": {
+              "properties": {
+                "choices": {
+                  "maxItems": 0,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "else": {
+              "properties": {
+                "choices": {
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exit-north.local/schemas/events.schema.json",
+  "title": "Exit North declarative world / event graph",
+  "definitions": {
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "hp": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "hunger": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 0
+        },
+        "dollars": {
+          "type": "integer",
+          "minimum": -1000000,
+          "maximum": 1000000
+        },
+        "stealth": {
+          "type": "integer",
+          "minimum": -100,
+          "maximum": 100
+        }
+      }
+    },
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hp",
+        "hunger"
+      ],
+      "properties": {
+        "hp": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "hunger": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "dollars": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "items": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 999
+          }
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "target"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.]*$"
+        },
+        "effects": {
+          "$ref": "#/definitions/effects"
+        },
+        "addItems": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 999
+          }
+        },
+        "addFlags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "description",
+        "cost"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "cost": {
+          "$ref": "#/definitions/cost"
+        },
+        "requires": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "allFlags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$"
+              },
+              "uniqueItems": true
+            },
+            "missingFlags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$"
+              },
+              "uniqueItems": true
+            },
+            "items": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$"
+              },
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 999
+              }
+            }
+          }
+        },
+        "outcome": {
+          "$ref": "#/definitions/outcome"
+        },
+        "chance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "base",
+            "min",
+            "max",
+            "modifiers"
+          ],
+          "properties": {
+            "base": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "min": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "modifiers": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "stat",
+                      "factor"
+                    ],
+                    "properties": {
+                      "stat": {
+                        "enum": [
+                          "stealth"
+                        ]
+                      },
+                      "factor": {
+                        "type": "number",
+                        "minimum": -0.01,
+                        "maximum": 0.01
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "flag",
+                      "add"
+                    ],
+                    "properties": {
+                      "flag": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_.]*$"
+                      },
+                      "add": {
+                        "type": "number",
+                        "minimum": -1,
+                        "maximum": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "success": {
+          "$ref": "#/definitions/outcome"
+        },
+        "failure": {
+          "$ref": "#/definitions/outcome"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "outcome"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "chance"
+                ],
+                "type": "object",
+                "properties": {
+                  "chance": {}
+                }
+              },
+              {
+                "required": [
+                  "success"
+                ],
+                "type": "object",
+                "properties": {
+                  "success": {}
+                }
+              },
+              {
+                "required": [
+                  "failure"
+                ],
+                "type": "object",
+                "properties": {
+                  "failure": {}
+                }
+              }
+            ]
+          },
+          "type": "object",
+          "properties": {
+            "outcome": {}
+          }
+        },
+        {
+          "required": [
+            "chance",
+            "success",
+            "failure"
+          ],
+          "not": {
+            "required": [
+              "outcome"
+            ],
+            "type": "object",
+            "properties": {
+              "outcome": {}
+            }
+          },
+          "type": "object",
+          "properties": {
+            "chance": {},
+            "success": {},
+            "failure": {}
+          }
+        }
+      ]
+    }
+  }
+}

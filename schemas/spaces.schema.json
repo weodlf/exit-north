@@ -1,0 +1,354 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "character",
+    "controls",
+    "scenes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "height",
+        "jacket",
+        "pants",
+        "backpack",
+        "skin"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "height": {
+          "type": "number",
+          "minimum": 1.5,
+          "maximum": 2
+        },
+        "jacket": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "pants": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "backpack": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "skin": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "walkSpeed",
+        "runSpeed",
+        "sneakSpeed",
+        "interactionRadius",
+        "playerRadius"
+      ],
+      "properties": {
+        "walkSpeed": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 8
+        },
+        "runSpeed": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 10
+        },
+        "sneakSpeed": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 5
+        },
+        "interactionRadius": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 5
+        },
+        "playerRadius": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 1
+        }
+      }
+    },
+    "scenes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "theme",
+          "spawn",
+          "bounds",
+          "sky",
+          "fog",
+          "fogNear",
+          "fogFar",
+          "sunColor",
+          "sunIntensity",
+          "exposure",
+          "time",
+          "camera",
+          "hotspots",
+          "npcs"
+        ],
+        "properties": {
+          "theme": {
+            "enum": [
+              "village",
+              "camp",
+              "river",
+              "city",
+              "jungle",
+              "gate",
+              "morning"
+            ]
+          },
+          "spawn": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number",
+              "minimum": -200,
+              "maximum": 200
+            }
+          },
+          "bounds": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "minX",
+              "maxX",
+              "minZ",
+              "maxZ"
+            ],
+            "properties": {
+              "minX": {
+                "type": "number",
+                "minimum": -200,
+                "maximum": 200
+              },
+              "maxX": {
+                "type": "number",
+                "minimum": -200,
+                "maximum": 200
+              },
+              "minZ": {
+                "type": "number",
+                "minimum": -200,
+                "maximum": 200
+              },
+              "maxZ": {
+                "type": "number",
+                "minimum": -200,
+                "maximum": 200
+              }
+            }
+          },
+          "sky": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          },
+          "fog": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          },
+          "fogNear": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 150
+          },
+          "fogFar": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "sunColor": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          },
+          "sunIntensity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "exposure": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 3
+          },
+          "time": {
+            "type": "string",
+            "pattern": "^[0-2][0-9]:[0-5][0-9]$"
+          },
+          "camera": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "distance",
+              "height",
+              "fov"
+            ],
+            "properties": {
+              "distance": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 10
+              },
+              "height": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "fov": {
+                "type": "number",
+                "minimum": 30,
+                "maximum": 100
+              }
+            }
+          },
+          "hotspots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "label",
+                "position",
+                "prop",
+                "bindings"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_.]*$"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "position": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number",
+                    "minimum": -200,
+                    "maximum": 200
+                  }
+                },
+                "prop": {
+                  "enum": [
+                    "wardrobe",
+                    "coat",
+                    "desk",
+                    "supplies",
+                    "exit",
+                    "work",
+                    "bench",
+                    "lamp",
+                    "person",
+                    "gate"
+                  ]
+                },
+                "bindings": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_.]*$"
+                  },
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_.]*$"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                }
+              }
+            }
+          },
+          "npcs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "position",
+                "color",
+                "path",
+                "speed"
+              ],
+              "properties": {
+                "position": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number",
+                    "minimum": -200,
+                    "maximum": 200
+                  }
+                },
+                "color": {
+                  "type": "string",
+                  "pattern": "^#[0-9a-fA-F]{6}$"
+                },
+                "path": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number",
+                      "minimum": -200,
+                      "maximum": 200
+                    }
+                  }
+                },
+                "speed": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 3
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exit-north.local/schemas/spaces.schema.json",
+  "title": "Third-person 3D scene, character and hotspot metadata"
+}
